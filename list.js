@@ -3,10 +3,10 @@ let list_id = 0
 
 class List {
   constructor(title) {
-    this.title = title
-    this.tasks = []
     list_id++
     this.id = list_id
+    this.title = title
+    this.tasks = []
     lists.push(this)
   }
 
@@ -23,14 +23,25 @@ class List {
     let newDiv = document.createElement('div')
     newDiv.setAttribute("id", `list_${list.id}`)
     newDiv.setAttribute('class', 'list')
+    newDiv.setAttribute('data-id', list.id)
+
+    let button = document.createElement('button')
+    button.innerText = "X"
+
     let title = document.createElement('h2')
-    title.innerText = list.title
+    title.append(button)
+    title.append(` ${list.title}`)
+
     newDiv.appendChild(title)
+
     let elementList = document.createElement('ul')
     elementList.setAttribute('class', 'task')
     newDiv.appendChild(elementList)
+
     let listsDiv = document.getElementById('lists')
     listsDiv.appendChild(newDiv)
+
+    this.deleteListButtonListener(button)
   }
 
   static addToSelect(list, select) {
@@ -40,10 +51,13 @@ class List {
     select.appendChild(option)
   }
 
-  static deleteListButton() {
-
+  static deleteListButtonListener(button) {
+    let listsDiv = document.querySelector("#lists")
+    button.addEventListener('click', event => {
+      let divList = event.target.parentNode.parentNode
+      let listId = parseInt(divList.getAttribute("data-id"))
+      listsDiv.removeChild(divList)
+      lists[listId - 1] = undefined
+    });
   }
-
-
-
 }
