@@ -13,9 +13,13 @@ class Task {
   static createTaskHtml(task) {
     let item = document.createElement('li')
     item.setAttribute("id", `task_${task.id}`)
-    item.innerHTML = `<button>X</button> ${task.description}, ${task.level}`// + button
+    let button = document.createElement('button')
+    button.innerText = "X"
+    item.append(button)
+    item.append(` ${task.description}, ${task.level}`)
     let listHtml = document.querySelector(`#list_${task.list.id} ul`)
     listHtml.appendChild(item)
+    this.deleteButtonListeners()
   }
 
   static deleteTaskById(taskId) {
@@ -23,4 +27,13 @@ class Task {
     item.parentNode.removeChild(item)
   }
 
+  static deleteButtonListeners() {
+    let taskDeleteButtons = document.querySelectorAll(".task button")
+    taskDeleteButtons.forEach((button) => {
+      button.addEventListener('click', event => {
+        let li = event.target.parentNode
+        li.parentNode.removeChild(li)
+      });
+    });
+  }
 }

@@ -40,7 +40,9 @@ class List {
     select.appendChild(option)
   }
 
+  static deleteListButton() {
 
+  }
 
 
 

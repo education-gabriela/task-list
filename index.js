@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     taskFormDiv.removeAttribute('style')
     List.addToSelect(currentList, selectList)
     List.createListHtml(currentList)
-    debugger
   })
 
   let taskDescription
@@ -31,4 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 
-})
+
+});
