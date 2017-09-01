@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     currentList = new List(titleOfTheList)
     taskFormDiv.removeAttribute('style')
     List.addToSelect(currentList, selectList)
+    List.createListHtml(currentList)
+    debugger
   })
 
   let taskDescription
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     taskDescription = document.getElementById("task-description").value
     taskPriority = document.getElementById('priority-level').value
     currentTask = new Task(List.findById(selectedListId), taskDescription, taskPriority)
+    Task.createTaskHtml(currentTask)
   })
 
 
