@@ -55,7 +55,8 @@ class List {
     let listsDiv = document.querySelector("#lists")
     button.addEventListener('click', event => {
       let divList = event.target.parentNode.parentNode
-      let listId = parseInt(divList.getAttribute("data-id"))
+      debugger
+      let listId = parseInt(divList.dataset.id)
       listsDiv.removeChild(divList)
       lists[listId - 1] = undefined
     });
