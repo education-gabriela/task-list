@@ -91,7 +91,7 @@ class List {
   static deleteFromSelect(listId) {
     let listSelect = document.getElementById('list-select')
     let listOptions = listSelect.options
-    let index;
+
     for(let i = 0, n = listOptions.length; i < n; i++) {
       if(listOptions[i].value == listId) {
         listSelect.remove(i)
@@ -106,7 +106,6 @@ class List {
         let listTasks = lists[key].tasks()
 
         for(let taskKey in listTasks) {
-
           tasks.splice(taskKey, 1)
           storage.set("tasks", tasks)
         }
