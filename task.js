@@ -16,6 +16,9 @@ class Task {
     item.innerHTML = `<button>X</button> ${task.description}, ${task.level}`// + button
     let listHtml = document.querySelector(`#list_${task.list.id} ul`)
     listHtml.appendChild(item)
+    let button = item.querySelector('button')
+    button.addEventListener('click', (event)=> {item.parentNode.removeChild(item)})
+    //button = current button.
   }
 
   static deleteTaskById(taskId) {

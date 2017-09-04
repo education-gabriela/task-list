@@ -24,13 +24,15 @@ class List {
     newDiv.setAttribute("id", `list_${list.id}`)
     newDiv.setAttribute('class', 'list')
     let title = document.createElement('h2')
-    title.innerText = list.title
+    title.innerHTML = `<button>X</button> ${list.title}`
     newDiv.appendChild(title)
     let elementList = document.createElement('ul')
     elementList.setAttribute('class', 'task')
     newDiv.appendChild(elementList)
     let listsDiv = document.getElementById('lists')
     listsDiv.appendChild(newDiv)
+    let button = newDiv.querySelector('button')
+    button.addEventListener('click', (event) => {newDiv.parentNode.removeChild(newDiv)})
   }
 
   static addToSelect(list, select) {
