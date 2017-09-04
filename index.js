@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectList = document.getElementById('list-select')
   const addTaskButton = document.getElementById('submit-task')
 
+  if(lists.length !== 0) {
+    List.bootStrap(selectList)
+    taskFormDiv.removeAttribute('style')
+    Task.bootStrap()
+  }
+
   addListButton.addEventListener('click', (event)=> {
     let titleOfTheList = document.getElementById("list-title").value
     let currentList = new List(titleOfTheList)
@@ -18,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let selectedListId = selectedList.options[selectedList.selectedIndex].value
     let taskDescription = document.getElementById("task-description").value
     let taskPriority = document.getElementById('priority-level').value
-    let currentTask = new Task(List.findById(selectedListId), taskDescription, taskPriority)
+    let currentTask = new Task(List.findById(selectedListId).id, taskDescription, taskPriority)
     Task.createTaskHtml(currentTask)
   })
 });
