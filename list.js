@@ -17,6 +17,10 @@ class List {
     }
   }
 
+  tasks() {
+    return tasks.filter(task => task.listId === this.id)
+  }
+
   static findById(id){
     id = parseInt(id)
     return lists.find(list => list.id === id)
@@ -97,9 +101,16 @@ class List {
   }
 
   static deleteFromStorage(listId) {
-    let index;
     for (let key in lists) {
       if (lists[key].id === listId) {
+        let listTasks = lists[key].tasks()
+
+        for(let taskKey in listTasks) {
+
+          tasks.splice(taskKey, 1)
+          storage.set("tasks", tasks)
+        }
+
         lists.splice(key, 1)
         storage.set("lists", lists)
         return ;
