@@ -1,8 +1,44 @@
+body {
+  background-color: #583a74;
+  font-family: sans-serif;
+}
+
 #form-wrapper {
   clear: both;
-  
+  overflow: auto;
 }
 
 #list-div, #task-div {
+  margin-left: 20%;
   float: left;
+  border: 1px solid black;
+  padding: 20px 40px;
+  border-radius: 15px;
+  height: 200px;
+  background-color: #ccc;
+}
+
+form>label, form>select, form>input {
+  line-height: 25px;
+  vertical-align: center;
+}
+
+h1:first-of-type {
+  margin-left: 39%;
+  color: white;
+}
+
+
+.list {
+  float: left;
+  border: 1px solid black;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 15px;
+  background-color: #ccc;
+}
+
+.list>ul {
+  list-style: none;
+  padding-left: 0pt;
 }
