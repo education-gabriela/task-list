@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const addTaskButton = document.getElementById('submit-task')
 
   if(lists.length !== 0) {
-    List.bootStrap(selectList)
+    List.bootstrap(selectList)
     taskFormDiv.removeAttribute('style')
-    Task.bootStrap()
+    Task.bootstrap()
   }
 
   addListButton.addEventListener('click', (event)=> {

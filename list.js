@@ -24,7 +24,7 @@ class List {
     return storage.get("lists").find(element => element.id == id)
   }
 
-  static bootStrap(selectList) {
+  static bootstrap(selectList) {
     lists.forEach(list => {
       this.createListHtml(list)
       this.addToSelect(list, selectList)

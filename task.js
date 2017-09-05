@@ -13,7 +13,7 @@ class Task {
     storage.set("taskIncrementId", taskIncrementId)
   }
 
-  static bootStrap() {
+  static bootstrap() {
     tasks.forEach(task => {
       this.createTaskHtml(task)
     })
