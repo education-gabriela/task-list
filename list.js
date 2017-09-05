@@ -2,19 +2,13 @@ let listIncrementId = parseInt(storage.get("listIncrementId", () => 0));
 let lists = storage.get("lists", () => []);
 
 class List {
-  constructor(title, list) {
-    if(typeof list  === "object") {
-      for(let key in list) {
-        this[key] = list[key]
-      }
-    } else {
-      listIncrementId++
-      this.id = listIncrementId
-      this.title = title
-      lists.push(this)
-      storage.set("lists", lists)
-      storage.set("listIncrementId", listIncrementId)
-    }
+  constructor(title) {
+    listIncrementId++
+    this.id = listIncrementId
+    this.title = title
+    lists.push(this)
+    storage.set("lists", lists)
+    storage.set("listIncrementId", listIncrementId)
   }
 
   tasks() {
@@ -120,6 +114,6 @@ class List {
 
 (function() {
   lists = lists.map(function(list) {
-    return new List(null, list)
+    return Object.setPrototypeOf(list, List.prototype)
   })
 })();

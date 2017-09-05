@@ -2,21 +2,15 @@ let taskIncrementId = parseInt(storage.get("taskIncrementId", () => 0));
 let tasks = storage.get("tasks", () => [])
 
 class Task {
-  constructor(listId, description, level, task){
-    if (task) {
-      for(let key in task) {
-        this[key] = task[key]
-      }
-    } else {
-      taskIncrementId++
-      this.id = taskIncrementId
-      this.listId = listId
-      this.description = description
-      this.level = level
-      tasks.push(this)
-      storage.set("tasks", tasks)
-      storage.set("taskIncrementId", taskIncrementId)
-    }
+  constructor(listId, description, level){
+    taskIncrementId++
+    this.id = taskIncrementId
+    this.listId = listId
+    this.description = description
+    this.level = level
+    tasks.push(this)
+    storage.set("tasks", tasks)
+    storage.set("taskIncrementId", taskIncrementId)
   }
 
   static bootStrap() {
@@ -63,6 +57,5 @@ class Task {
 
 (function() {
   tasks = tasks.map(function(task) {
-    return new Task(task.listId, task.description, task.level, task)
-  })
+    return Object.setPrototypeOf(task, Task.prototype)  })
 })();
