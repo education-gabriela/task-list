@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const taskFormDiv = document.getElementById('task-div')
   const selectList = document.getElementById('list-select')
   const addTaskButton = document.getElementById('submit-task')
+  const listForm = document.getElementById('main-form')
+  const taskForm = document.getElementById('task-form')
 
   if(lists.length !== 0) {
     List.bootstrap(selectList)
@@ -11,8 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   addListButton.addEventListener('click', (event)=> {
-    let titleOfTheList = document.getElementById("list-title").value
-    let currentList = new List(titleOfTheList)
+    let titleOfTheList = document.getElementById("list-title")
+    let currentList = new List(titleOfTheList.value)
+    listForm.reset()
 
     taskFormDiv.removeAttribute('style')
     List.addToSelect(currentList, selectList)
@@ -22,9 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
   addTaskButton.addEventListener('click', (event)=>{
     let selectedList = document.getElementById('list-select')
     let selectedListId = selectedList.options[selectedList.selectedIndex].value
-    let taskDescription = document.getElementById("task-description").value
-    let taskPriority = document.getElementById('priority-level').value
-    let currentTask = new Task(List.findById(selectedListId).id, taskDescription, taskPriority)
+    let taskDescription = document.getElementById("task-description")
+    let taskPriority = document.getElementById('priority-level')
+    let currentTask = new Task(List.findById(selectedListId).id, taskDescription.value, taskPriority.value)
     Task.createTaskHtml(currentTask)
+    taskForm.reset()
   })
 });
