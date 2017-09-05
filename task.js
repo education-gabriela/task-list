@@ -51,7 +51,6 @@ class Task {
   }
 
   static deleteFromStorage(taskId) {
-    let index;
     for (let key in tasks) {
       if (tasks[key].id === taskId) {
         tasks.splice(key, 1)
