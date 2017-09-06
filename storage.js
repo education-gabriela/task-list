@@ -1,22 +1,22 @@
-function Storage() {
+function Storage () {
 
 }
 
 Storage.prototype = {
-  get: function(attribute, cb) {
+  get: function (attribute, cb) {
     try {
       return JSON.parse(window.localStorage[attribute]);
     } catch(e) {
       if (cb) {
-        return this.set(attribute, cb())
+        return this.set(attribute, cb());
       }
-      return null
+      return null;
     }
   },
-  set: function(attribute, value) {
+  set: function (attribute, value) {
     window.localStorage[attribute] = JSON.stringify(value);
-    return value
+    return value;
   }
-}
+};
 
-const storage = new Storage()
+const storage = new Storage();
